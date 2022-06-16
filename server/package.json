@@ -1,0 +1,11 @@
+{
+  "name": "gracial-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "apollo-server": "^3.9.0",
+    "graphql": "^16.5.0",
+    "mongoose": "^6.3.8"
+  }
+}
