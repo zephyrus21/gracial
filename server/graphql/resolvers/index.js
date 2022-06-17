@@ -5,4 +5,7 @@ module.exports = {
   Query: {
     ...postResolver.Query,
   },
+  Mutation: {
+    ...userResolver.Mutation,
+  },
 };
