@@ -1,10 +1,12 @@
 import { gql, useMutation } from "@apollo/client";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/auth";
 
 export const Register = () => {
   const navigate = useNavigate();
 
+  const ctx = useContext(AuthContext);
   const [errors, setErrors] = useState({
     username: "",
     email: "",
@@ -23,7 +25,8 @@ export const Register = () => {
   };
 
   const [adduser, { loading }] = useMutation(REGISTER_USER_MUTATION, {
-    update(_, data) {
+    update(_, res) {
+      ctx.login(res.data.register);
       setErrors({});
       navigate("/");
     },

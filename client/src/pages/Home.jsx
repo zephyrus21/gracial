@@ -3,10 +3,6 @@ import { gql, useQuery } from "@apollo/client";
 export const Home = () => {
   const { loading, data } = useQuery(FETCH_POSTS_QUERY);
 
-  if (!loading) {
-    console.log(data.getPosts);
-  }
-
   return (
     <div>
       <h1>Posts</h1>

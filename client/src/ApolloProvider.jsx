@@ -1,5 +1,6 @@
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import App from "./App";
+import { AuthProvider } from "./context/auth";
 
 // const authLink = setContext(() => {
 //   const token = localStorage.getItem("jwtToken");
@@ -17,6 +18,8 @@ const client = new ApolloClient({
 
 export default (
   <ApolloProvider client={client}>
-    <App />
+    <AuthProvider>
+      <App />
+    </AuthProvider>
   </ApolloProvider>
 );
