@@ -1,4 +1,3 @@
-const { argsToArgsConfig } = require("graphql/type/definition");
 const Post = require("../../models/post");
 const isAuth = require("../../utils/isAuth");
 
@@ -28,7 +27,7 @@ module.exports = {
     async createPost(_, { body }, ctx) {
       const user = isAuth(ctx);
 
-      if (args.body.trim() === "") {
+      if (body.trim() === "") {
         throw new Error("Post body must not be empty");
       }
 

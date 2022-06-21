@@ -1,10 +1,12 @@
 import { gql, useQuery } from "@apollo/client";
+import PostForm from "../components/PostForm";
 
 export const Home = () => {
   const { loading, data } = useQuery(FETCH_POSTS_QUERY);
 
   return (
     <div>
+      <PostForm />
       <h1>Posts</h1>
       {loading ? (
         <h3>Loading...</h3>
@@ -12,10 +14,9 @@ export const Home = () => {
         <div>
           {data.getPosts.map((post) => (
             <div style={{ display: "flex" }} key={post.id}>
-              <p>{post.title}</p>
-              <p>{post.body}</p>
-              <p>{post.username}</p>
-              <p>{post.likeCount}</p>
+              <p>{post.body} ----</p>
+              <p>Posted by: {post.username}</p>
+              <p>Likes: {post.likeCount}</p>
             </div>
           ))}
         </div>

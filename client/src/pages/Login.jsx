@@ -21,15 +21,15 @@ export const Login = () => {
   };
 
   const [loginUser, { loading }] = useMutation(LOGIN_USER_MUTATION, {
+    variables: values,
     update(_, res) {
-      ctx(res.data.login);
+      ctx.login(res.data.login);
       setErrors({});
       navigate("/");
     },
     onError(err) {
       setErrors(err.graphQLErrors[0].extensions.errors);
     },
-    variables: values,
   });
 
   const onSubmitHandler = (e) => {
@@ -59,6 +59,7 @@ export const Login = () => {
               value={values.password}
               onChange={onChangeHandler}
             />
+            {errors.password && <p>{errors.password}</p>}
             <button type='submit'>Login</button>
           </form>
         </div>

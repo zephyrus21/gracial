@@ -6,7 +6,6 @@ import { Home, Login, Register } from "./pages";
 
 const App = () => {
   const { user } = useContext(AuthContext);
-  console.log(user);
 
   return (
     <BrowserRouter>
