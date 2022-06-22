@@ -1,8 +1,12 @@
-import { gql, useQuery } from "@apollo/client";
+import { useContext, useState } from "react";
+import { gql, useMutation, useQuery } from "@apollo/client";
 import PostForm from "../components/PostForm";
+import { AuthContext } from "../context/auth";
+import DeleteButton from "../components/DeleteButton";
 
 export const Home = () => {
   const { loading, data } = useQuery(FETCH_POSTS_QUERY);
+  const { user } = useContext(AuthContext);
 
   return (
     <div>
@@ -17,6 +21,10 @@ export const Home = () => {
               <p>{post.body} ----</p>
               <p>Posted by: {post.username}</p>
               <p>Likes: {post.likeCount}</p>
+              <p>Comments: {post.commentCount}</p>
+              {user && user.username === post.username && (
+                <DeleteButton postId={post.id}>Delete</DeleteButton>
+              )}
             </div>
           ))}
         </div>
